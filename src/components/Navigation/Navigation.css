@@ -1,0 +1,11 @@
+.Nav {
+    display: flex;
+    justify-content: flex-start;
+    background: #cdecff;
+    height: 10%;
+}
+
+.SignInOut {
+    display: flex;
+    justify-content: flex-end;
+}
