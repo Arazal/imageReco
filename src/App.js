@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation'
 import Signin from './components/Signin/Signin'
+import Register from './components/Register/Register'
 import FaceRecognition from './components/FaceRecignition/FaceRecognition'
 //import Logo from './components/Logo/Logo'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
@@ -19,7 +20,8 @@ class App extends Component {
     this.state = {
       input: '',
       imageUrl: '',
-      box: {}
+      box: {},
+      route: 'signin'
     }
   }
 
@@ -57,15 +59,28 @@ onButtonSubmit = () => {
   //console.log('click')
 }
 
+onRouteChange = (route) => {
+  this.setState({route: route})
+}
+
   render() {
     return (
       <div className="App">
-        <Navigation />
-        {/* <Logo /> */}
-        <Rank />
-        <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
-        <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
-        <Signin />
+       <Navigation onRouteChange={this.onRouteChange}/>
+       { this.state.route === 'home' 
+       ? <div> 
+            <Rank />
+            <ImageLinkForm 
+                onInputChange={this.onInputChange} 
+                onButtonSubmit={this.onButtonSubmit} />
+            <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+          </div>
+        : (
+            this.state.route === 'signin'
+            ? <Signin onRouteChange={this.onRouteChange} />
+            : <Register onRouteChange={this.onRouteChange} />
+        )
+       }
       </div>
     );
   }

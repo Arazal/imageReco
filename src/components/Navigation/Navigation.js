@@ -3,7 +3,7 @@ import './Navigation.css'
 import Tilt from 'react-tilt'
 import brain from './Logo.png'
 
-const Navigation = () => {
+const Navigation = ({ onRouteChange }) => {
     return (
         <nav className='Nav'>
          <div className='pa2'>
@@ -11,8 +11,8 @@ const Navigation = () => {
                  <div className="Tilt-inner pa3"><img style={{paddingTop: '5px'}} alt='logo' src={brain}></img></div>
             </Tilt>
          </div> 
-            <p className='br1 f3 link dim blue underline pa3 pointer'>Sign out</p>
-            <p className='br1 f3 link dim blue underline pa3 pointer'>Sign in</p>
+            <p onClick={() => onRouteChange('signin')} className='br1 f3 link dim blue underline pa3 pointer'>Sign out</p>
+          
        
         </nav>
     )
