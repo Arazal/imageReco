@@ -1,7 +1,4 @@
 import React from 'react'
-import 'tachyons'
-import './Signin.css'
-
 
 const Signin = ({ onRouteChange }) => {
     return (
@@ -21,16 +18,9 @@ const Signin = ({ onRouteChange }) => {
                 </div>
               
               
-                <input 
-                  onClick={() => onRouteChange('home')}
-                  className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                  type="submit"
-                  value="Sign in"/>
-                  <p onClick={() => {
-                    onRouteChange('register')
-                    console.log('click')
-                   } 
-                } className="f6 link dim black db pointer">Register</p>
+                <input onClick={() => onRouteChange('home')} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
+
+                  <p onClick={() => {onRouteChange('register')} } className="f6 link dim black db pointer">Register</p>
                 </fieldset>
             </form>
         </main>
