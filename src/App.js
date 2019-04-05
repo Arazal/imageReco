@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation'
+import Signin from './components/Signin/Signin'
 import FaceRecognition from './components/FaceRecignition/FaceRecognition'
 //import Logo from './components/Logo/Logo'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
@@ -64,6 +65,7 @@ onButtonSubmit = () => {
         <Rank />
         <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
         <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+        <Signin />
       </div>
     );
   }
