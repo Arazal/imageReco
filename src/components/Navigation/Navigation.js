@@ -3,7 +3,7 @@ import './Navigation.css'
 
 
 const Navigation = ({ onRouteChange, isSignedIn }) => {
-    console.log('test')
+    
     if (isSignedIn) {
         return (
             <nav className='Nav'>

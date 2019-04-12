@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 export default class Signin extends Component  {
+
+  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +20,7 @@ export default class Signin extends Component  {
   }
 
   onSubmitSignin = () => {
+    const {loadUser, onRouteChange} = this.props;
     fetch('http://localhost:3000/signin', {
       method: 'post',
       headers: {'content-type': 'application/json'},
@@ -26,11 +30,17 @@ export default class Signin extends Component  {
       })
     })
         .then(response => response.json())
-        .then(data => {
-          if(data === 'success') {
-            this.props.onRouteChange('home');
+        .then(user => {
+          if(user.id) {
+            loadUser(user);
+            onRouteChange('home');
+            console.log('in submit', user)
           }
         })
+        .catch(error => {
+          console.log(error); 
+        });
+        
    
   }
 
@@ -39,7 +49,7 @@ export default class Signin extends Component  {
       return ( 
         <article className="ba shadow-5 center dib">
         <main className="pa4 black-80">
-            <form className="measure center">
+            <div className="measure center">
               <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="f4 fw6 ph0 mh0">Sign In</legend>
                 <div className="mt3">
@@ -68,7 +78,7 @@ export default class Signin extends Component  {
 
                   <p onClick={() => {onRouteChange('register')} } className="f6 link dim black db pointer">Register</p>
                 </fieldset>
-            </form>
+            </div>
         </main>
             
         </article>
